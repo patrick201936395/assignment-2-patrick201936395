@@ -1,1 +1,334 @@
-/* Paste your Assignment 1 styles.css here. Keep the icons in src/assets/ so url(assets/...) paths keep working. */
+/* General layout */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    color: #000000;
+    background-color: #ffffff;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.page-layout {
+    display: flex;
+    flex: 1;
+}
+
+/* Header */
+.main-header {
+    display: flex;
+    align-items: center;
+    padding: 6px 16px 6px 44px;
+    background-color: #dc4c3e;
+    color: #ffffff;
+}
+
+.menu-button {
+    padding: 0;
+    margin-right: 12px;
+    border: 0;
+    background: none;
+    cursor: pointer;
+}
+
+.main-header img {
+    display: block;
+    width: 24px;
+    height: 24px;
+}
+
+.quick-find {
+    display: flex;
+    align-items: center;
+    width: 230px;
+    min-width: 0;
+    padding: 3px 8px;
+    border-radius: 3px;
+    background-color: #e57368;
+}
+
+.quick-find input {
+    width: 100%;
+    min-width: 0;
+    margin-left: 8px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: #ffffff;
+    font: inherit;
+}
+
+.quick-find input::placeholder {
+    color: #ffffff;
+    opacity: 1;
+}
+
+.task-counter {
+    display: flex;
+    align-items: center;
+    margin: 0 0 0 auto;
+    padding-left: 16px;
+}
+
+.task-counter img {
+    margin-right: 8px;
+}
+
+/* Left navigation */
+.sidebar {
+    width: 300px;
+    flex-shrink: 0;
+    padding: 30px 5px 30px 35px;
+    background-color: #fefbf2;
+}
+
+.sidebar a {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 3px;
+    color: #000000;
+    text-decoration: none;
+}
+
+.sidebar img {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+.sidebar .active {
+    background-color: #ffffff;
+}
+
+.task-count {
+    margin-left: 5px;
+    font-size: 12px;
+    color: #7e7d79;
+}
+
+/* Main content */
+.main-content {
+    flex: 1;
+    min-width: 0;
+    padding: 36px 6%;
+}
+
+h1 {
+    margin: 0 0 12px;
+    font-size: 20px;
+}
+
+.task-list li {
+    border-bottom: 1px solid #eeeeee;
+}
+
+.task-list label {
+    display: flex;
+    align-items: center;
+    padding: 11px 0;
+    line-height: 18px;
+    cursor: pointer;
+}
+
+.task-list input {
+    appearance: none;
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    margin: 0 10px 0 0;
+    border: 1px solid #999999;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.task-list input:checked {
+    background-color: #dc4c3e;
+}
+
+/* Mobile layout */
+@media (max-width: 480px) {
+    .sidebar {
+        display: none;
+    }
+
+    .main-header {
+        padding-left: 16px;
+    }
+
+    .main-content {
+        padding: 30px 20px;
+    }
+}
+
+/* React task controls */
+.app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+button, input {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+.menu-button {
+    cursor: default;
+}
+
+.quick-find span {
+    margin-left: 8px;
+}
+
+.sidebar .nav-label {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+}
+
+.sidebar a:hover {
+    background-color: #f4eee3;
+}
+
+.filters {
+    display: flex;
+    margin-bottom: 8px;
+}
+
+.filters button {
+    padding: 4px 12px;
+    border: 0;
+    background: none;
+    color: #555555;
+}
+
+.filters button:first-child {
+    padding-left: 0;
+}
+
+.filters button + button {
+    border-left: 1px solid #999999;
+}
+
+.filters .selected {
+    color: #dc4c3e;
+    font-weight: bold;
+}
+
+.filters button:hover, .delete-button:hover {
+    color: #a32920;
+    text-decoration: underline;
+}
+
+button:active {
+    opacity: 0.7;
+}
+
+button:focus-visible, a:focus-visible, input:focus-visible {
+    outline: 2px solid #a32920;
+    outline-offset: 3px;
+}
+
+.task-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.task-list label {
+    flex: 1;
+    min-width: 0;
+}
+
+.task-list label span {
+    overflow-wrap: anywhere;
+}
+
+.task-list input:hover {
+    border-color: #dc4c3e;
+}
+
+.task-list input:checked {
+    background-image: url('./assets/check_icon.png');
+    background-size: cover;
+    border-color: #dc4c3e;
+}
+
+.completed label span {
+    text-decoration: line-through;
+    color: #777777;
+}
+
+.delete-button {
+    flex-shrink: 0;
+    padding: 6px 0 6px 6px;
+    border: 0;
+    background: none;
+    color: #777777;
+    font-size: 12px;
+}
+
+.empty-state {
+    padding: 12px 0;
+    color: #777777;
+}
+
+.task-form {
+    margin-top: 20px;
+}
+
+.task-form label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.task-form-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.task-form input {
+    flex: 1;
+    min-width: 0;
+    padding: 8px;
+    border: 1px solid #999999;
+    border-radius: 3px;
+}
+
+.task-form button {
+    padding: 8px 12px;
+    border: 0;
+    border-radius: 3px;
+    background-color: #dc4c3e;
+    color: #ffffff;
+}
+
+.task-form button:hover {
+    background-color: #b9362b;
+}
+
+@media (min-width: 481px) and (max-width: 700px) {
+    .sidebar {
+        width: 190px;
+        padding-left: 16px;
+    }
+
+    .main-content {
+        padding: 30px 20px;
+    }
+}
